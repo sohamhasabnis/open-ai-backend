@@ -28,7 +28,7 @@ public class OpenAIRepoImpl implements OpenAI{
     public SchemaResponse getResponse(Schema schema) {
         String url = "https://api.openai.com/v1/completions";
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setBearerAuth("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");
+        httpHeaders.setBearerAuth("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");
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         ObjectMapper objectMapper = new ObjectMapper();
         String a = null;
