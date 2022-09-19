@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.openai.openaicode.model.Schema;
 import com.openai.openaicode.model.SchemaResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -19,6 +20,9 @@ public class OpenAIRepoImpl implements OpenAI{
 
     private final  RestTemplate restTemplate;
 
+    @Value("${auth.token}")
+    private String authToken;
+
     @Autowired
     public OpenAIRepoImpl(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -28,7 +32,7 @@ public class OpenAIRepoImpl implements OpenAI{
     public SchemaResponse getResponse(Schema schema) {
         String url = "https://api.openai.com/v1/completions";
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setBearerAuth("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");
+        httpHeaders.setBearerAuth(authToken);
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         ObjectMapper objectMapper = new ObjectMapper();
         String a = null;
