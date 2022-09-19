@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*",methods = {RequestMethod.GET,RequestMethod.POST})
 @RestController
 @RequestMapping("/get-blog")
 public class OpenAIController {
