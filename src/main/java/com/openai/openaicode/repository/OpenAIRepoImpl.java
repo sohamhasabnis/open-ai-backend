@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
+import java.util.Base64;
 
 @Repository
 public class OpenAIRepoImpl implements OpenAI{
@@ -32,7 +33,7 @@ public class OpenAIRepoImpl implements OpenAI{
     public SchemaResponse getResponse(Schema schema) {
         String url = "https://api.openai.com/v1/completions";
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setBearerAuth(authToken);
+        httpHeaders.setBearerAuth(new String(Base64.getDecoder().decode(authToken)));
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         ObjectMapper objectMapper = new ObjectMapper();
         String a = null;
